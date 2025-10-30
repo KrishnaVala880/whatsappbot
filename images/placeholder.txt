@@ -1,0 +1,3 @@
+Place your image files here:
+- ShatranjIcon.PNG
+- AaratIcon.PNG

@@ -1,0 +1,619 @@
+{
+  "project_info": {
+    "name": "Brookstone",
+    "developer": "Shataranj group & Aarat developers",
+    "past_projects": "Multiple premium projects delivered by both developers",
+    "towers": "2",
+    "total_units": "40",
+    "location": "Shilaj, Ahmedabad",
+    "site_address": "Brookstone, B/S, Vaikunth Bungalows, Next to Oxygen Park, DPS-Bopal Road, Shilaj, Ahmedabad. 380059",
+    "detailed_location": "Next to Oxygen Park on DPS-Bopal Road",
+    "pincode": "380059",
+    "possession_date": "May 2027",
+    "rera_registered": "Yes",
+    "vastu_compliant": "Yes",
+    "total_land_area": "2850 sq.yard",
+    "purely_residential": "Yes, it is purely residential project",
+    "360_degree_view": "Yes, it has 360 degree open view"
+  },
+  "developer_portfolio": {
+    "shatranj_group": {
+      "experience": "Legacy spanning over 58 years",
+      "projects_delivered": "20+ landmark projects",
+      "clients_served": "More than 10,000 clients",
+      "reputation": "Built on trust and transparency, consistently created developments that balance design, quality, and long-term value",
+      "commitment": "Architectural finesse and thoughtful execution makes them a trusted name in premium real estate",
+      "detailed_description": "With a legacy spanning over 58 years, Shatranj Group has delivered 20+ landmark projects and proudly served more than 10,000 clients. Built on trust and transparency, the group has consistently created developments that balance design, quality, and long-term value. Their commitment to architectural finesse and thoughtful execution makes them a trusted name in premium real estate.",
+      "completed_projects": {
+        "residential": [
+          "Orchid Homes - Premium apartments",
+          "Orchid Villas - Luxury villas",
+          "Dev-Shruti Complex - Mixed-use development",
+          "Dev Residency - High-rise apartments",
+          "Dev-Aangan Bungalows - Premium bungalows",
+          "Dev-Aryan - Modern apartments",
+          "Anupam Apartments - Family-centric homes",
+          "Madhukunj Society - Gated community"
+        ],
+        "commercial": [
+          "Pleasure Club - Recreation & leisure",
+          "Pleasure City - Entertainment complex"
+        ],
+        "ongoing_projects": [
+          "Sky Villas - Ultra-luxury penthouses",
+          "Green Valley - Eco-friendly township",
+          "Tech Park - IT/ITES complex"
+        ]
+      }
+    },
+    "aarat_developers": {
+      "experience": "Over two decades of expertise in real estate industry",
+      "reputation": "Symbol of trust, innovation, and excellence",
+      "vision": "Clear vision to shape sustainable lifestyles",
+      "commitment": "Dedicated to building not just homes, but thoughtful communities that nurture families and enrich lives",
+      "mission": "Create spaces beyond the ordinary with timeless design, functional planning, and deep respect for environment",
+      "approach": "Integrate eco-friendly practices, modern aesthetics, and future-ready infrastructure",
+      "philosophy": "Driven by integrity and inspired by evolving needs of modern families, continues to redefine urban living",
+      "detailed_description": "With over two decades of expertise in the real estate industry, Aarat Developers stands as a symbol of trust, innovation, and excellence. Founded with a clear vision to shape sustainable lifestyles, we are dedicated to building not just homes, but thoughtful communities that nurture families and enrich lives. Our mission is simple yet powerful - to create spaces beyond the ordinary. Each of our projects reflects a blend of timeless design, functional planning, and a deep respect for the environment. From concept to creation, we integrate eco-friendly practices, modern aesthetics, and future-ready infrastructure to deliver value that lasts for generations. Driven by integrity and inspired by the evolving needs of modern families, Aarat Developers continues to redefine urban living - one landmark at a time."
+    },
+    "joint_venture_strength": {
+      "combined_experience": "Over 78+ years of combined real estate expertise",
+      "project_delivery": "Track record of delivering premium residential and commercial spaces",
+      "client_base": "Served thousands of satisfied customers",
+      "quality_assurance": "Commitment to architectural excellence and long-term value creation",
+      "market_presence": "Strong presence in Gujarat real estate market"
+    }
+  },
+  "unit_configurations": [
+    {
+      "type": "3BHK",
+      "size_sqft": "2650 sq ft",
+      "size_sq_yard": "295 sq.yard",
+      "price_cr": "1.66 Cr",
+      "carpet_area": "1440 sq ft",
+      "loading_percentage": "TBD"
+    },
+    {
+      "type": "4BHK",
+      "size_sqft": "3850 sq ft",
+      "size_sq_yard": "428 sq.yard",
+      "price_cr": "2.41 Cr",
+      "carpet_area": "2100 sq ft",
+      "loading_percentage": "TBD"
+    }
+  ],
+  "3bhk_unit_plan": {
+    "overview": {
+      "total_area": "2650 sq ft",
+      "carpet_area": "1440 sq ft",
+      "bedrooms": "3",
+      "bathrooms": "3",
+      "balconies": "1",
+      "layout_type": "Well-designed layout with optimal space utilization and 4'0\" wide passages"
+    },
+    "room_details": {
+      "formal_living": {
+        "size": "16'3\" × 15'3\"",
+        "area_sqft": "248 sq ft",
+        "features": "Spacious formal living room with excellent natural light",
+        "location": "Main area with balcony access"
+      },
+      "balcony": {
+        "size": "4'0\" × 15'3\"",
+        "area_sqft": "61 sq ft",
+        "features": "Connected to formal living room",
+        "location": "Front-facing balcony"
+      },
+      "kitchen": {
+        "size": "10'6\" × 11'0\"",
+        "area_sqft": "116 sq ft",
+        "features": "Modular kitchen with adjacent storage and wash area",
+        "location": "Strategically positioned with service areas"
+      },
+      "dining": {
+        "size": "9'6\" × 11'0\"",
+        "area_sqft": "105 sq ft",
+        "features": "Separate dining area adjacent to kitchen",
+        "location": "Connected to kitchen and living areas"
+      },
+      "store_kitchen": {
+        "size": "5'0\" × 4'0\"",
+        "area_sqft": "20 sq ft",
+        "features": "Storage space near kitchen",
+        "location": "Adjacent to kitchen"
+      },
+      "wash_area": {
+        "size": "6'0\" × 4'0\"",
+        "area_sqft": "24 sq ft",
+        "features": "Washing and utility area",
+        "location": "Near kitchen for convenience"
+      },
+      "puja_room": {
+        "size": "8'6\" × 4'6\"",
+        "area_sqft": "38 sq ft",
+        "features": "Dedicated prayer/puja room",
+        "location": "Peaceful corner location"
+      },
+      "bedroom_1": {
+        "size": "14'6\" × 11'0\"",
+        "area_sqft": "160 sq ft",
+        "features": "Master bedroom with attached dress and toilet",
+        "location": "Corner room with good ventilation"
+      },
+      "bedroom_2": {
+        "size": "10'3\" × 11'0\"",
+        "area_sqft": "113 sq ft",
+        "features": "Secondary bedroom with good natural light",
+        "location": "Well-positioned for privacy"
+      },
+      "bedroom_3": {
+        "size": "14'6\" × 11'0\"",
+        "area_sqft": "160 sq ft",
+        "features": "Third bedroom with attached dress and toilet",
+        "location": "Corner room with excellent ventilation"
+      },
+      "dress_toilet_bedroom1": {
+        "size": "5'3\" × 11'0\"",
+        "area_sqft": "58 sq ft",
+        "features": "Attached dress area and toilet for bedroom 1",
+        "location": "Private access from bedroom 1"
+      },
+      "dress_toilet_bedroom3": {
+        "size": "5'3\" × 11'0\"",
+        "area_sqft": "58 sq ft",
+        "features": "Attached dress area and toilet for bedroom 3",
+        "location": "Private access from bedroom 3"
+      },
+      "powder_toilet": {
+        "size": "5'3\" × 11'0\"",
+        "area_sqft": "58 sq ft",
+        "features": "Common powder room/guest toilet",
+        "location": "Accessible from main living area"
+      }
+    },
+    "special_features": {
+      "passage_width": "4'0\" wide passages throughout for comfortable movement",
+      "cross_ventilation": "Excellent cross ventilation with windows in all rooms",
+      "storage_solutions": "Dedicated storage near kitchen and dress areas in bedrooms",
+      "privacy": "Well-separated bedroom areas with individual attached facilities",
+      "spiritual_space": "Dedicated puja room for religious activities",
+      "utility_planning": "Separate wash area and storage for practical daily needs"
+    },
+    "area_breakdown": {
+      "living_spaces": "Formal living (248) + Dining (105) = 353 sq ft",
+      "bedrooms_total": "Bedroom1 (160) + Bedroom2 (113) + Bedroom3 (160) = 433 sq ft",
+      "kitchen_utility": "Kitchen (116) + Store (20) + Wash (24) = 160 sq ft",
+      "bathrooms_total": "Dress&Toilet1 (58) + Dress&Toilet3 (58) + Powder (58) = 174 sq ft",
+      "other_spaces": "Balcony (61) + Puja (38) = 99 sq ft",
+      "circulation": "Passages and entrance area = Remaining built-up area"
+    }
+  },
+  "4bhk_unit_plan": {
+    "overview": {
+      "total_area": "3850 sq ft",
+      "carpet_area": "2100 sq ft",
+      "bedrooms": "4",
+      "bathrooms": "5",
+      "balconies": "1",
+      "layout_type": "Premium layout with family living area, personal foyer, and 4' wide passages"
+    },
+    "room_details": {
+      "formal_living": {
+        "size": "19'5\" × 15'3\"",
+        "area_sqft": "297 sq ft",
+        "features": "Spacious formal living room with excellent natural light",
+        "location": "Main area with balcony access"
+      },
+      "balcony": {
+        "size": "19'3\" × 5'0\"",
+        "area_sqft": "97 sq ft",
+        "features": "Large balcony connected to formal living room",
+        "location": "Front-facing balcony"
+      },
+      "kitchen": {
+        "size": "13'0\" × 11'0\"",
+        "area_sqft": "143 sq ft",
+        "features": "Large modular kitchen with adjacent storage and wash area",
+        "location": "Strategically positioned with service areas"
+      },
+      "dining": {
+        "size": "11'0\" × 13'6\"",
+        "area_sqft": "149 sq ft",
+        "features": "Spacious separate dining area adjacent to kitchen",
+        "location": "Connected to kitchen and living areas"
+      },
+      "store_kitchen": {
+        "size": "6'0\" × 5'6\"",
+        "area_sqft": "33 sq ft",
+        "features": "Large storage space near kitchen",
+        "location": "Adjacent to kitchen"
+      },
+      "wash_area": {
+        "size": "6'0\" × 5'3\"",
+        "area_sqft": "32 sq ft",
+        "features": "Spacious washing and utility area",
+        "location": "Near kitchen for convenience"
+      },
+      "puja_room": {
+        "features": "Dedicated prayer/puja room",
+        "location": "Peaceful location for spiritual activities"
+      },
+      "family_living": {
+        "size": "13'9\" × 10'6\"",
+        "area_sqft": "145 sq ft",
+        "features": "Additional family living area for informal gatherings",
+        "location": "Private family space separate from formal living"
+      },
+      "personal_foyer": {
+        "size": "9'9\" × 4'3\"",
+        "area_sqft": "42 sq ft",
+        "features": "Private entrance foyer for the unit",
+        "location": "Entry area providing privacy"
+      },
+      "vestibule": {
+        "size": "4'3\" × 4'3\"",
+        "area_sqft": "18 sq ft",
+        "features": "Entrance vestibule area",
+        "location": "Entry transition space"
+      },
+      "cloak_room": {
+        "size": "4'5\" × 4'0\"",
+        "area_sqft": "18 sq ft",
+        "features": "Storage for coats and personal items",
+        "location": "Near entrance"
+      },
+      "bedroom_1": {
+        "size": "11'0\" × 13'0\"",
+        "area_sqft": "143 sq ft",
+        "features": "Well-sized bedroom with good ventilation",
+        "location": "Positioned for privacy and comfort"
+      },
+      "bedroom_2": {
+        "size": "13'0\" × 11'0\"",
+        "area_sqft": "143 sq ft",
+        "features": "Spacious bedroom with attached dress and toilet",
+        "location": "Corner room with excellent natural light"
+      },
+      "bedroom_3": {
+        "size": "15'0\" × 11'0\"",
+        "area_sqft": "165 sq ft",
+        "features": "Large bedroom with attached dress and toilet",
+        "location": "Premium corner location with dual facilities"
+      },
+      "bedroom_4": {
+        "size": "15'0\" × 11'0\"",
+        "area_sqft": "165 sq ft",
+        "features": "Large bedroom with attached toilet",
+        "location": "Spacious corner room with private facilities"
+      },
+      "toilet_bedroom4": {
+        "size": "5'9\" × 6'9\"",
+        "area_sqft": "39 sq ft",
+        "features": "Attached toilet for bedroom 4",
+        "location": "Private access from bedroom 4"
+      },
+      "dress_toilet_bedroom2": {
+        "size": "6'0\" × 11'0\"",
+        "area_sqft": "66 sq ft",
+        "features": "Attached dress area and toilet for bedroom 2",
+        "location": "Private access from bedroom 2"
+      },
+      "dress_toilet_bedroom3": {
+        "size": "6'0\" × 11'0\"",
+        "area_sqft": "66 sq ft",
+        "features": "Attached dress area and toilet for bedroom 3",
+        "location": "Private access from bedroom 3"
+      },
+      "toilet_bedroom3": {
+        "size": "6'0\" × 6'9\"",
+        "area_sqft": "41 sq ft",
+        "features": "Additional toilet facility near bedroom 3",
+        "location": "Convenient access for bedroom 3"
+      },
+      "powder_toilet": {
+        "size": "4'6\" × 6'9\"",
+        "area_sqft": "31 sq ft",
+        "features": "Common powder room/guest toilet",
+        "location": "Accessible from main living area"
+      }
+    },
+    "special_features": {
+      "passage_width": "4' wide passages throughout for luxurious movement",
+      "dual_living": "Both formal living and family living areas for different occasions",
+      "private_entrance": "Personal foyer and vestibule for enhanced privacy",
+      "premium_bedrooms": "Large bedrooms with multiple attached facilities",
+      "spiritual_space": "Dedicated puja room for religious activities",
+      "utility_planning": "Separate wash area and large storage for practical needs",
+      "cloak_facilities": "Dedicated cloak room for storage convenience"
+    },
+    "area_breakdown": {
+      "living_spaces": "Formal living (297) + Family living (145) + Dining (149) = 591 sq ft",
+      "bedrooms_total": "Bedroom1 (143) + Bedroom2 (143) + Bedroom3 (165) + Bedroom4 (165) = 616 sq ft",
+      "kitchen_utility": "Kitchen (143) + Store (33) + Wash (32) = 208 sq ft",
+      "bathrooms_total": "All dress areas and toilets = 309 sq ft",
+      "entrance_spaces": "Personal foyer (42) + Vestibule (18) + Cloak (18) = 78 sq ft",
+      "other_spaces": "Balcony (97) + Puja room + circulation areas",
+      "total_calculated": "Approximately 1899 sq ft of major spaces"
+    }
+  },
+  "available_options": {
+    "bhk_types": "Only 2 options available: 3 & 4 BHK",
+    "no_1bhk_2bhk": "No"
+  },
+  "amenities": [
+    "Indoor gym",
+    "Multipurpose court",
+    "Indoor games",
+    "Toddler play area",
+    "Sand pits",
+    "Lush green lawn",
+    "Dense landscaping",
+    "Water bodies",
+    "Sculptures",
+    "Library",
+    "EV charging points",
+    "Allotted parking"
+  ],
+  "construction_specifications": {
+    "structure": {
+      "design": "RCC Structure designed with earthquake resistant frame & AAC blocks",
+      "safety": "Earthquake resistant construction for enhanced safety",
+      "materials": "High-quality AAC blocks for better insulation and durability"
+    },
+    "flooring": {
+      "tiles_size": "Premium tiles 800x1600 size",
+      "bathroom_utility": "Premium anti-skid tiles in bathrooms and utility area",
+      "quality": "Premium quality vitrified tiles throughout"
+    },
+    "bathroom": {
+      "plumbing": "Concealed plumbing system throughout",
+      "tiles": "Premium ceramic tiles up to lintel level",
+      "walls": "Premium ceramic tiles up to lintel level for all bathrooms",
+      "doors": "Wood frames/granite frame for bathroom doors",
+      "fittings": "Bath & CP Fittings: KOHLER OR Equivalent",
+      "quality": "Premium quality fittings and fixtures"
+    },
+    "kitchen": {
+      "platform": "Natural/Artificial Granite Platform",
+      "dado": "Dado tiles upto lintel level",
+      "sink": "Stainless steel sink (S.S. Sink) OR Quartz Sink",
+      "walls": "Premium ceramic tiles up to lintel level",
+      "layout": "Efficiently designed with modern amenities"
+    },
+    "elevator": {
+      "brand": "KONE/SCHINDLER OR Equivalent",
+      "features": "High-quality elevator systems for reliable vertical transportation",
+      "availability": "Yes, available in both blocks A and B",
+      "count": "2 lifts per block (total 4 lifts)",
+      "specifications": {
+        "block_a_size": "8'-5\" × 6'-8\"",
+        "block_b_size": "6'-8\" × 8'-0\"",
+        "location": "Located in dedicated lift lobbies in both blocks",
+        "service": "Passenger elevators with modern features"
+      }
+    },
+    "electrification": {
+      "wiring": "Concealed 3 phase electrical copper wiring throughout",
+      "switches": "Modular switches (LEGRAND OR Equivalent)",
+      "wires": "ISI wires (Polycab OR Equivalent), MCB, ELCB for safety",
+      "ac_provision": "AC piping in all bedrooms",
+      "quality": "High-grade electrical components",
+      "safety_features": "Complete electrical safety system with MCB and ELCB"
+    },
+    "doors": {
+      "main_door": "Main door with veneer and teak wood frames",
+      "security": "Main door with Digital Lock",
+      "interior_doors": "All door frames - teak wood (ghana)",
+      "frames": "High-quality teak wood frames for all doors",
+      "hardware": "Premium quality hardware fittings"
+    },
+    "windows": {
+      "type": "Powder coated aluminum domal series",
+      "coating": "Powder coated aluminum with premium finish",
+      "frames": "Natural/Artificial Stone frames",
+      "design": "Modern design for better ventilation and natural light"
+    },
+    "security_system": {
+      "surveillance": "CCTV Surveillance System",
+      "access_control": "Smart Door Access control system with intercom facility",
+      "gate_security": "24x7 gated security with automatic smart gate system",
+      "monitoring": "Round-the-clock security monitoring",
+      "intercom": "Video door phone system for enhanced security"
+    },
+    "water_supply": {
+      "domestic": "Common underground water tank for domestic water",
+      "overhead": "Overhead water tank with pressurised water supply",
+      "pressure": "Pressurized water supply system",
+      "quality": "Water purification system for safe drinking water",
+      "backup": "Adequate water storage capacity"
+    }
+  },
+  "pricing": {
+    "box_price_2650": "1.66 Cr for 2650 sq ft",
+    "box_price_3850": "2.41 Cr for 3850 sq ft",
+    "price_per_sqft": "Rs 5300/ sq ft",
+    "down_payment": "TBD",
+    "booking_amount": "TBD",
+    "payment_schedule": "TBD",
+    "construction_linked_plan": "TBD",
+    "loan_facility": "Yes",
+    "tied_banks": "TBD",
+    "maintenance_cost": "TBD",
+    "floor_rise_charges": "No floor rise charges applicable",
+    "current_offers": "TBD",
+    "additional_charges": "TBD",
+    "cancellation_policy": "TBD",
+    "price_negotiable": "Yes, prices are negotiable based on unit selection and payment terms"
+  },
+  "parking": {
+    "3bhk_parking": {
+      "spaces": "2",
+      "description": "2 dedicated covered car parking spaces included with every 3 BHK unit",
+      "location": "Located in stilt and basement levels"
+    },
+    "4bhk_parking": {
+      "spaces": "3",
+      "description": "3 dedicated covered car parking spaces included with every 4 BHK unit",
+      "location": "Located in stilt and basement levels"
+    },
+    "parking_type": "Covered parking in stilt and basement levels",
+    "parking_features": [
+      "Well-lit parking areas",
+      "24x7 security coverage",
+      "Easy access ramps",
+      "Clear demarcation for each slot",
+      "Proper ventilation system"
+    ],
+    "visitor_parking": "Dedicated visitor parking spaces available separately"
+  },
+  "documentation": {
+    "documents_provided": "TBD",
+    "booking_documents": "TBD"
+  },
+  "facilities": {
+    "sample_flat": "Using VR for virtual sample flat viewing",
+    "brochure": "Digital brochure available with complete details",
+    "site_office_address": "TBD",
+    "whatsapp_location": "Will share pinned location on whatsapp"
+  },
+  "location_details": {
+    "nearby_facilities": "Malls, Hospitals, Educational Institutes, Temples are in the vicinity of 10-15 minutes",
+    "nearby_malls": {
+      "distance": "10-15 minutes",
+      "list": [
+        "TRP Mall",
+        "Palladium Mall",
+        "Ahmedabad One Mall",
+        "D-Mart",
+        "Osia Mart"
+      ]
+    },
+    "nearby_hospitals": {
+      "distance": "10-15 minutes",
+      "list": [
+        "Saraswati Hospital",
+        "AMC Community Health Center",
+        "Krishna Shalby Hospital",
+        "Global Hospital",
+        "Sterling Hospital - SBR",
+        "Zydus Hospital",
+        "Epic Hospital"
+      ]
+    },
+    "nearby_education": {
+      "distance": "10-15 minutes",
+      "list": [
+        "DPS - Bopal",
+        "Divya Jyot School",
+        "The Tulip International",
+        "Anand Niketan - Shilaj",
+        "Indus University",
+        "Khyati College"
+      ]
+    },
+    "connectivity": "Well-connected location with easy access to major educational, healthcare, and shopping facilities",
+    "future_development": "The area shows promising future growth potential with several upcoming developments:\n- Proposed commercial complexes and business parks\n- Planned educational institutions and healthcare facilities\n- Expected infrastructure improvements including road widening\n- Upcoming residential projects indicating growing demand\n- Green initiatives and urban planning developments\n- Enhanced connectivity through proposed transport links",
+    "appreciation_potential": "Can expect 9-10% yearly",
+    "rental_income": "Can expect 4-5% rental yield"
+  },
+  "ground_floor_plan": {
+    "summary": "The ground floor features:\n- Two symmetrical residential blocks (Block A & B)\n- Lavish entrance foyer for both blocks\n- Fully equipped gymnasium\n- Library and multi-purpose room\n- Indoor games area\n- Toddler play area with dedicated facilities\n- Covered parking in stilt and basement\n- Society office and maintenance facilities\n- Beautifully landscaped central courtyard\n- Drop-off plaza and visitor parking\n- 24x7 security cabin with modern surveillance",
+    "site_overview": {
+      "layout_design": "Symmetrically designed with two residential/commercial blocks (Block A & Block B)",
+      "main_entry": "Right side connecting to 12M TP Road",
+      "boundaries": "Site bounded by roads and walkways",
+      "central_amenities": "Common amenities located between the two blocks including seating, gym, library, multipurpose court, sand pit, and landscaped areas",
+      "parking_distribution": "Car parking spaces spread throughout, both along boundaries and near blocks",
+      "drop_off_plaza": "Centrally located for easy access"
+    },
+    "block_a_zone": {
+      "block_a_foyer": {
+        "size": "14'-9\" × 14'-6\"",
+        "function": "Entry point into Block A"
+      },
+      "staircases": "UP & DN staircases on both sides of the foyer",
+      "lift_lobby": {
+        "lifts_count": "2 lifts",
+        "size": "8'-5\" × 6'-8\""
+      },
+      "seating_space": {
+        "size": "44'-0\" × 21'-7\"",
+        "function": "Large sitting lounge outside Block A"
+      },
+      "society_office": {
+        "size": "10'-3\" × 16'-3\"",
+        "location": "Beside the seating lounge"
+      },
+      "store_society": {
+        "size": "10'-3\" × 5'-0\"",
+        "location": "Near the Society Office"
+      },
+      "toddlers_space": {
+        "size": "16'-4\" × 15'-9\"",
+        "function": "Play area for toddlers"
+      },
+      "store_toddlers": {
+        "size": "11'-0\" × 5'-7\"",
+        "location": "Near the Toddler's Space"
+      },
+      "toilet_toddlers": {
+        "size": "6'-0\" × 6'-7\"",
+        "location": "Near the Toddler's Space"
+      },
+      "other_utilities": {
+        "security_cabin": "Located at entry/exit gate with toilet",
+        "meter_room": "Space allocated for electrical meters",
+        "car_parking": "Dedicated parking spaces",
+        "kids_drop_off": "Safe drop-off area for children",
+        "ramp_basement": "Next to Block A foyer for underground parking access",
+        "water_body": "Decorative feature beside walkway for aesthetics"
+      }
+    },
+    "central_amenities": {
+      "multipurpose_court": {
+        "size": "40'-8\" × 18'-11\"",
+        "location": "Center of complex, surrounded by walkways"
+      },
+      "sand_pit": {
+        "location": "Adjacent to multipurpose court",
+        "function": "Children's play area"
+      },
+      "other_facilities": [
+        "Internal Roads",
+        "Drop-Off Plaza",
+        "Lawn Area",
+        "DG Set",
+        "Seating Blocks",
+        "Ramp Down to Basement",
+        "Water Fountain with sculpture"
+      ]
+    },
+    "block_b_zone": {
+      "block_b_foyer": {
+        "size": "14'-0\" × 19'-6\"",
+        "function": "Entry point into Block B"
+      },
+      "staircases": "UP & DN staircases on both sides of the foyer",
+      "lift_lobby": {
+        "lifts_count": "2 lifts",
+        "size": "6'-8\" × 8'-0\""
+      },
+      "gym": {
+        "size": "17'-9\" × 19'-3\"",
+        "function": "Fitness and exercise area"
+      },
+      "library_lounge": {
+        "size": "18'-9\" × 26'-5\"",
+        "function": "Library, Lounge, Multi-Purpose Room"
+      },
+      "other_utilities": {
+        "sand_pit": "Additional play area",
+        "postal_box": "Space allocated for postal services"
+      }
+    }
+  },
+  "additional_info": {
+    "chat_support": "We can use chat gpt for this questions output",
+    "contact_for_details": "If you need exact information please contact me"
+  }
+}
