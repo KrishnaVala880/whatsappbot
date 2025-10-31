@@ -89,27 +89,90 @@ def send_whatsapp_text(to_phone, message):
     except Exception as e:
         logging.error(f"❌ Error sending message: {e}")
         return False
-
-
-def send_whatsapp_document(to_phone, document_id, caption="Here is your Brookstone Brochure 📄"):
-    """Send WhatsApp document (PDF brochure) using Facebook Graph API"""
+    
+def send_whatsapp_location(to_phone):
+    """Send Google Maps location via WhatsApp Cloud API"""
     url = f"https://graph.facebook.com/v23.0/{WHATSAPP_PHONE_NUMBER_ID}/messages"
     headers = {
         "Authorization": f"Bearer {WHATSAPP_TOKEN}",
         "Content-Type": "application/json"
     }
+    payload = {
+        "messaging_product": "whatsapp",
+        "recipient_type": "individual",
+        "to": to_phone,
+        "type": "location",
+        "location": {
+            "latitude": "23.0433468",
+            "longitude": "72.4594457",
+            "name": "Brookstone",
+            "address": "Brookstone, Vaikunth Bungalows, Beside DPS Bopal Rd, next to A. Shridhar Oxygen Park, Bopal, Shilaj, Ahmedabad, Gujarat 380058"
+        }
+    }
+
+    response = requests.post(url, headers=headers, json=payload)
+    if response.status_code == 200:
+        logging.info(f"✅ Location sent successfully to {to_phone}")
+        return True
+    else:
+        logging.error(f"❌ Failed to send location: {response.status_code} - {response.text}")
+        return False
+
+
+
+# def send_whatsapp_document(to_phone, document_id, caption="Here is your Brookstone Brochure 📄"):
+#     """Send WhatsApp document (PDF brochure) using Facebook Graph API"""
+#     url = f"https://graph.facebook.com/v23.0/{WHATSAPP_PHONE_NUMBER_ID}/messages"
+#     headers = {
+#         "Authorization": f"Bearer {WHATSAPP_TOKEN}",
+#         "Content-Type": "application/json"
+#     }
     
+#     payload = {
+#         "messaging_product": "whatsapp",
+#         "to": to_phone,
+#         "type": "document",
+#         "document": {
+#             "id": document_id,
+#             "caption": caption,
+#             "filename": "Brookstone.pdf"
+#         }
+#     }
+    
+#     try:
+#         response = requests.post(url, headers=headers, json=payload, timeout=15)
+#         if response.status_code == 200:
+#             logging.info(f"✅ Document sent to {to_phone}")
+#             return True
+#         else:
+#             logging.error(f"❌ Failed to send document: {response.status_code} - {response.text}")
+#             return False
+#     except Exception as e:
+#         logging.error(f"❌ Error sending document: {e}")
+#         return False
+
+def send_whatsapp_document(to_phone, caption="Here is your Brookstone Brochure 📄"):
+    """Send WhatsApp document (PDF brochure) directly from static folder via public URL"""
+    url = f"https://graph.facebook.com/v23.0/{WHATSAPP_PHONE_NUMBER_ID}/messages"
+    headers = {
+        "Authorization": f"Bearer {WHATSAPP_TOKEN}",
+        "Content-Type": "application/json"
+    }
+
+    # The file must be publicly accessible by WhatsApp (i.e., via HTTPS)
+    brochure_url = "https://your-domain.com/static/Brookstone.pdf"  # 👈 Replace with your actual deployed URL
+
     payload = {
         "messaging_product": "whatsapp",
         "to": to_phone,
         "type": "document",
         "document": {
-            "id": document_id,
+            "link": brochure_url,
             "caption": caption,
             "filename": "Brookstone.pdf"
         }
     }
-    
+
     try:
         response = requests.post(url, headers=headers, json=payload, timeout=15)
         if response.status_code == 200:
@@ -121,6 +184,7 @@ def send_whatsapp_document(to_phone, document_id, caption="Here is your Brooksto
     except Exception as e:
         logging.error(f"❌ Error sending document: {e}")
         return False
+
 
 
 def mark_message_as_read(message_id):
@@ -639,7 +703,340 @@ def call_gemini_api(prompt, language='english'):
 
 
 # ===== MESSAGE PROCESSING LOGIC =====
-def process_incoming_message(from_phone, message_text, message_id):
+# def process_incoming_message(from_phone, message_text, message_id):
+#     """Process incoming WhatsApp message and generate response"""
+    
+#     # Get or create user state
+#     if from_phone not in CONV_STATE:
+#         CONV_STATE[from_phone] = {
+#             'chat_history': [],
+#             'lead_capture_mode': None,
+#             'user_phone': from_phone,
+#             'language': 'english',
+#             'asked_about_brochure': False,
+#             'booking_info': {}
+#         }
+    
+#     state = CONV_STATE[from_phone]
+#     user_lower = message_text.lower().strip()
+    
+#     # Detect language from user's message
+#     detected_lang = detect_language(message_text)
+#     state['language'] = detected_lang  # Update user's preferred language
+    
+#     # Add user message to history
+#     state['chat_history'].append((message_text, True))
+    
+#     # ===== HANDLE PHONE NUMBER FOR BROCHURE =====
+#     if state.get('lead_capture_mode') == 'phone_for_brochure':
+#         phone_pattern = r'\b(?:\+91[\s-]?)?[6-9]\d{9}\b'
+#         phone_match = re.search(phone_pattern, message_text)
+        
+#         if phone_match:
+#             phone_number = phone_match.group().replace(' ', '').replace('-', '')
+#             state['user_phone'] = phone_number
+#             state['lead_capture_mode'] = None
+            
+#             success = send_whatsapp_document(phone_number, BROCHURE_MEDIA_ID)
+            
+#             if not success:
+#                 reply = """I apologize, but there was an issue sending the brochure to your WhatsApp. 
+
+# Please try again later or contact our agent directly at +91 1234567890."""
+#                 state['chat_history'].append((reply, False))
+#                 return reply
+                
+#             return None
+#         else:
+#             reply = """I didn't find a valid phone number. Please share your *10-digit mobile number* to send the brochure.
+
+# For example: 9876543210 or +91 9876543210"""
+#             state['chat_history'].append((reply, False))
+#             return reply
+    
+#     # ===== DETECT BROCHURE REQUEST =====
+#     brochure_keywords = ['brochure', 'pdf', 'download', 'send brochure', 'share brochure', 'floor plan', 'send pdf']
+#     if any(kw in user_lower for kw in brochure_keywords):
+#         state['asked_about_brochure'] = True
+        
+#         # Send brochure directly to the phone number that messaged us
+#         # success = send_whatsapp_document(from_phone, BROCHURE_MEDIA_ID)
+#         success = send_whatsapp_document(from_phone)
+        
+#         if not success:
+#             reply = """I apologize, but there was an issue sending the brochure.
+
+# Please contact our agent at +91 1234567890 for assistance."""
+#             state['chat_history'].append((reply, False))
+#             return reply
+            
+#         return None
+    
+#     # ===== HANDLE AFFIRMATIVE RESPONSE TO BROCHURE =====
+#     if state.get('asked_about_brochure', False):
+#         state['asked_about_brochure'] = False
+        
+#         affirmative_patterns = ['yes', 'yeah', 'yup', 'sure', 'ok', 'okay', 'please', 'send', 'want', 'need']
+        
+#         if any(a in user_lower for a in affirmative_patterns):
+#             success = send_whatsapp_document(from_phone)
+            
+#             if not success:
+#                 reply = """❌ There was an issue sending your brochure on WhatsApp.
+# Please contact our agent at +91 1234567890."""
+#                 state['chat_history'].append((reply, False))
+#                 return reply
+                
+#             return None
+    
+#     # ===== HANDLE WHATSAPP CONTACT REQUEST =====
+#     contact_patterns = ['whatsapp chat', 'whatsapp number', 'agent whatsapp', 'contact agent', 'agent contact', 'talk to agent']
+    
+#     if any(phrase in user_lower for phrase in contact_patterns):
+#         reply = f"""Great! You can reach our agent, Shatranj, directly on WhatsApp at:
+
+# 📱 *WhatsApp Number:* +91 1234567890
+
+# Our team will respond within 30 minutes during office hours (10 AM - 7 PM).
+
+# You can also call on the same number for a phone conversation.
+
+# Is there anything else about Brookstone I can help you with? 🏠"""
+        
+#         state['chat_history'].append((reply, False))
+#         return reply
+    
+#     # ===== HANDLE SITE VISIT BOOKING =====
+#     booking_keywords_english = ['book site visit', 'schedule visit', 'site visit', 'book appointment', 'visit booking']
+#     booking_keywords_gujarati = ['સાઇટ વિઝિટ', 'એપોઇન્ટમેન્ટ', 'વિઝિટ બુક', 'મુલાકાત', 'સાઇટ જોવા']
+    
+#     if any(kw in user_lower for kw in booking_keywords_english + booking_keywords_gujarati):
+#         # Choose form URL based on detected language
+#         english_form_url = "https://docs.google.com/forms/d/e/1FAIpQLSceds-nIr9vTLHJ0Jl1TOv0DNYGQhb0CtEa2R3mA9Ae3iP8Lg/viewform"
+#         gujarati_form_url = "https://docs.google.com/forms/d/e/1FAIpQLSdmWOyIDKZ5KU47LhzKUJXwITN40Fn8tV8swuX7IIWFvB72qQ/viewform"
+        
+#         if state['language'] == 'gujarati':
+#             reply = f"""🏠 *બ્રૂકસ્ટોન સાઇટ વિઝિટ બુકિંગ*
+
+# તમારી સાઇટ વિઝિટ શેડ્યૂલ કરવા માટે, નીચેની લિંક પર ક્લિક કરો અને ફોર્મ ભરો:
+
+# 📝 {gujarati_form_url}
+
+# ફોર્મમાં આ માહિતી પૂછવામાં આવશે:
+# • તમારું નામ
+# • કોન્ટેક્ટ નંબર
+# • પસંદગીની તારીખ અને સમય
+# • યુનિટ પસંદગી
+# • બજેટ રેન્જ
+
+# ફોર્મ સબમિટ કર્યા પછી, તમને 15 મિનિટની અંદર WhatsApp પર કન્ફર્મેશન મેસેજ મળશે.
+
+# ફોર્મ ભરવામાં કોઈ મદદ જોઈએ છે? પૂછવામાં સંકોચ ન કરશો! 😊
+
+# _નોંધ: કૃપા કરીને ફોર્મમાં સાચો કોન્ટેક્ટ નંબર આપશો, કારણ કે અમે એ જ WhatsApp નંબર પર કન્ફર્મેશન મોકલીશું._ 📱"""
+#         else:
+#             reply = f"""🏠 *Book Your Site Visit to Brookstone*
+
+# To schedule your site visit, please click the link below and fill out a quick form:
+
+# 📝 {english_form_url}
+
+# The form will ask for:
+# • Your Name
+# • Contact Number
+# • Preferred Date & Time
+# • Unit Type Interest
+# • Budget Range
+
+# Once you submit the form, you will receive a confirmation message here on WhatsApp within 15 minutes.
+
+# Need help with the form? Feel free to ask! 😊
+
+# _Tip: Make sure to provide accurate contact details in the form as we'll send the confirmation on the same WhatsApp number._ 📱"""
+        
+#         state['chat_history'].append((reply, False))
+#         return reply
+        
+#         state['chat_history'].append((reply, False))
+#         return reply
+    
+#     # ===== HANDLE BOOKING FORM SUBMISSION =====
+#     if state.get('lead_capture_mode') == 'booking':
+#         booking_info = state['booking_info']
+#         current_step = booking_info.get('current_step')
+        
+#         if current_step == 'name':
+#             booking_info['name'] = message_text
+#             booking_info['current_step'] = 'confirm_phone'
+            
+#             reply = f"""Thank you, {message_text}! 📝
+
+# I have your phone number as: *{from_phone}*
+# Is this the correct number for the site visit coordination?
+
+# Reply with:
+# 1️⃣ *Yes* to confirm this number
+# 2️⃣ Or type your *alternate number*"""
+            
+#             state['chat_history'].append((reply, False))
+#             return reply
+            
+#         elif current_step == 'confirm_phone':
+#             if user_lower == 'yes' or user_lower == '1':
+#                 phone = booking_info['phone']
+#             else:
+#                 # Check if valid phone number provided
+#                 phone_pattern = r'\b(?:\+91[\s-]?)?[6-9]\d{9}\b'
+#                 phone_match = re.search(phone_pattern, message_text)
+#                 if phone_match:
+#                     phone = phone_match.group().replace(' ', '').replace('-', '')
+#                 else:
+#                     reply = """Please provide a valid 10-digit phone number or type *Yes* to confirm the existing number.
+
+# Example: 9876543210 or +91 9876543210"""
+#                     state['chat_history'].append((reply, False))
+#                     return reply
+            
+#             booking_info['phone'] = phone
+#             booking_info['current_step'] = 'date'
+            
+#             reply = """Great! Now, please tell me your *preferred date* for the site visit.
+
+# Format: DD/MM/YYYY
+# Example: 05/11/2025"""
+            
+#             state['chat_history'].append((reply, False))
+#             return reply
+            
+#         elif current_step == 'date':
+#             # Basic date validation
+#             date_pattern = r'\d{1,2}[/-]\d{1,2}[/-]\d{4}'
+#             if not re.match(date_pattern, message_text):
+#                 reply = """Please provide the date in the correct format (DD/MM/YYYY).
+
+# Example: 05/11/2025"""
+#                 state['chat_history'].append((reply, False))
+#                 return reply
+            
+#             booking_info['date'] = message_text
+#             booking_info['current_step'] = 'time'
+            
+#             reply = """Perfect! Now, please select your *preferred time* for the site visit.
+
+# Available slots:
+# 1️⃣ 10:00 AM
+# 2️⃣ 11:30 AM
+# 3️⃣ 02:00 PM
+# 4️⃣ 03:30 PM
+# 5️⃣ 05:00 PM
+
+# Reply with the slot number (1-5) or type the time."""
+            
+#             state['chat_history'].append((reply, False))
+#             return reply
+            
+#         elif current_step == 'time':
+#             time_slots = {
+#                 '1': '10:00 AM',
+#                 '2': '11:30 AM',
+#                 '3': '02:00 PM',
+#                 '4': '03:30 PM',
+#                 '5': '05:00 PM'
+#             }
+            
+#             if message_text in time_slots:
+#                 time_slot = time_slots[message_text]
+#             else:
+#                 time_slot = message_text
+            
+#             booking_info['time'] = time_slot
+#             booking_info['current_step'] = 'unit_type'
+            
+#             reply = """Excellent! Which unit type are you interested in?
+
+# 1️⃣ *3 BHK* (2650 sq ft)
+# 2️⃣ *4 BHK* (3850 sq ft)
+# 3️⃣ *Both options*
+
+# Please reply with 1, 2, or 3."""
+            
+#             state['chat_history'].append((reply, False))
+#             return reply
+            
+#         elif current_step == 'unit_type':
+#             unit_types = {
+#                 '1': '3 BHK',
+#                 '2': '4 BHK',
+#                 '3': 'Both 3 & 4 BHK'
+#             }
+            
+#             if message_text not in ['1', '2', '3']:
+#                 reply = """Please select a valid option:
+# 1️⃣ for 3 BHK
+# 2️⃣ for 4 BHK
+# 3️⃣ for Both options"""
+#                 state['chat_history'].append((reply, False))
+#                 return reply
+            
+#             booking_info['unit_type'] = unit_types[message_text]
+#             booking_info['current_step'] = 'budget'
+            
+#             reply = """Almost done! 🎯
+
+# What is your *approximate budget*?
+
+# Example formats:
+# • 1.5 Cr
+# • 2 Crore
+# • 150 Lakhs"""
+            
+#             state['chat_history'].append((reply, False))
+#             return reply
+            
+#         elif current_step == 'budget':
+#             budget = extract_budget_from_text(message_text)
+#             if not budget:
+#                 reply = """Please specify your budget in a clear format:
+# Example: 1.5 Cr, 2 Crore, or 150 Lakhs"""
+#                 state['chat_history'].append((reply, False))
+#                 return reply
+            
+#             booking_info['budget'] = budget
+            
+#             # Since we're using Google Forms now, redirect to form
+#             google_form_url = "https://docs.google.com/forms/d/e/1FAIpQLSceds-nIr9vTLHJ0Jl1TOv0DNYGQhb0CtEa2R3mA9Ae3iP8Lg/viewform"
+            
+#             # Clear booking mode
+#             state['lead_capture_mode'] = None
+            
+#             reply = f"""� To complete your booking, please fill out our site visit form:
+
+# 📝 {google_form_url}
+
+# Once you submit the form, you'll receive a confirmation message with all the details.
+
+# Need help with anything else? �"""
+            
+#             state['asked_about_brochure'] = True
+#             state['chat_history'].append((reply, False))
+#             return reply
+    
+#     # ===== EXTRACT AND SAVE BUDGET =====
+#     budget = extract_budget_from_text(message_text)
+#     if budget and state.get('booking_info'):
+#         # Since we're now using Google Forms to collect budget
+#         # Simply log for tracking
+#         logging.info(f"Budget indicated by {from_phone}: {budget}")
+    
+#     # ===== DEFAULT: USE GEMINI FOR GENERAL QUESTIONS =====
+#     chat_history = state.get('chat_history', [])
+#     prompt = create_gemini_prompt(message_text, FAQ_DATA, state['language'], chat_history)
+#     ai_response = call_gemini_api(prompt, state['language'])
+    
+#     state['chat_history'].append((ai_response, False))
+#     return ai_response
+
+def process_incoming_message(from_phone, message_text, message_id): 
     """Process incoming WhatsApp message and generate response"""
     
     # Get or create user state
@@ -696,7 +1093,7 @@ For example: 9876543210 or +91 9876543210"""
         state['asked_about_brochure'] = True
         
         # Send brochure directly to the phone number that messaged us
-        success = send_whatsapp_document(from_phone, BROCHURE_MEDIA_ID)
+        success = send_whatsapp_document(from_phone)
         
         if not success:
             reply = """I apologize, but there was an issue sending the brochure.
@@ -714,7 +1111,7 @@ Please contact our agent at +91 1234567890 for assistance."""
         affirmative_patterns = ['yes', 'yeah', 'yup', 'sure', 'ok', 'okay', 'please', 'send', 'want', 'need']
         
         if any(a in user_lower for a in affirmative_patterns):
-            success = send_whatsapp_document(from_phone, BROCHURE_MEDIA_ID)
+            success = send_whatsapp_document(from_phone)
             
             if not success:
                 reply = """❌ There was an issue sending your brochure on WhatsApp.
@@ -723,6 +1120,20 @@ Please contact our agent at +91 1234567890."""
                 return reply
                 
             return None
+
+    # ===== HANDLE LOCATION REQUEST =====
+    location_keywords = ['location', 'address', 'site address', 'google map', 'map', 'direction', 'where is', 'reach']
+    if any(kw in user_lower for kw in location_keywords):
+        send_whatsapp_location(from_phone)
+        reply = """📍 *Brookstone Location:*
+
+Brookstone, Vaikunth Bungalows,
+Beside DPS Bopal Rd, next to A. Shridhar Oxygen Park,
+Bopal, Shilaj, Ahmedabad, Gujarat 380058
+
+I've also shared the location pin above 👆."""
+        state['chat_history'].append((reply, False))
+        return reply
     
     # ===== HANDLE WHATSAPP CONTACT REQUEST =====
     contact_patterns = ['whatsapp chat', 'whatsapp number', 'agent whatsapp', 'contact agent', 'agent contact', 'talk to agent']
@@ -746,7 +1157,6 @@ Is there anything else about Brookstone I can help you with? 🏠"""
     booking_keywords_gujarati = ['સાઇટ વિઝિટ', 'એપોઇન્ટમેન્ટ', 'વિઝિટ બુક', 'મુલાકાત', 'સાઇટ જોવા']
     
     if any(kw in user_lower for kw in booking_keywords_english + booking_keywords_gujarati):
-        # Choose form URL based on detected language
         english_form_url = "https://docs.google.com/forms/d/e/1FAIpQLSceds-nIr9vTLHJ0Jl1TOv0DNYGQhb0CtEa2R3mA9Ae3iP8Lg/viewform"
         gujarati_form_url = "https://docs.google.com/forms/d/e/1FAIpQLSdmWOyIDKZ5KU47LhzKUJXwITN40Fn8tV8swuX7IIWFvB72qQ/viewform"
         
@@ -791,176 +1201,10 @@ _Tip: Make sure to provide accurate contact details in the form as we'll send th
         
         state['chat_history'].append((reply, False))
         return reply
-        
-        state['chat_history'].append((reply, False))
-        return reply
-    
-    # ===== HANDLE BOOKING FORM SUBMISSION =====
-    if state.get('lead_capture_mode') == 'booking':
-        booking_info = state['booking_info']
-        current_step = booking_info.get('current_step')
-        
-        if current_step == 'name':
-            booking_info['name'] = message_text
-            booking_info['current_step'] = 'confirm_phone'
-            
-            reply = f"""Thank you, {message_text}! 📝
-
-I have your phone number as: *{from_phone}*
-Is this the correct number for the site visit coordination?
-
-Reply with:
-1️⃣ *Yes* to confirm this number
-2️⃣ Or type your *alternate number*"""
-            
-            state['chat_history'].append((reply, False))
-            return reply
-            
-        elif current_step == 'confirm_phone':
-            if user_lower == 'yes' or user_lower == '1':
-                phone = booking_info['phone']
-            else:
-                # Check if valid phone number provided
-                phone_pattern = r'\b(?:\+91[\s-]?)?[6-9]\d{9}\b'
-                phone_match = re.search(phone_pattern, message_text)
-                if phone_match:
-                    phone = phone_match.group().replace(' ', '').replace('-', '')
-                else:
-                    reply = """Please provide a valid 10-digit phone number or type *Yes* to confirm the existing number.
-
-Example: 9876543210 or +91 9876543210"""
-                    state['chat_history'].append((reply, False))
-                    return reply
-            
-            booking_info['phone'] = phone
-            booking_info['current_step'] = 'date'
-            
-            reply = """Great! Now, please tell me your *preferred date* for the site visit.
-
-Format: DD/MM/YYYY
-Example: 05/11/2025"""
-            
-            state['chat_history'].append((reply, False))
-            return reply
-            
-        elif current_step == 'date':
-            # Basic date validation
-            date_pattern = r'\d{1,2}[/-]\d{1,2}[/-]\d{4}'
-            if not re.match(date_pattern, message_text):
-                reply = """Please provide the date in the correct format (DD/MM/YYYY).
-
-Example: 05/11/2025"""
-                state['chat_history'].append((reply, False))
-                return reply
-            
-            booking_info['date'] = message_text
-            booking_info['current_step'] = 'time'
-            
-            reply = """Perfect! Now, please select your *preferred time* for the site visit.
-
-Available slots:
-1️⃣ 10:00 AM
-2️⃣ 11:30 AM
-3️⃣ 02:00 PM
-4️⃣ 03:30 PM
-5️⃣ 05:00 PM
-
-Reply with the slot number (1-5) or type the time."""
-            
-            state['chat_history'].append((reply, False))
-            return reply
-            
-        elif current_step == 'time':
-            time_slots = {
-                '1': '10:00 AM',
-                '2': '11:30 AM',
-                '3': '02:00 PM',
-                '4': '03:30 PM',
-                '5': '05:00 PM'
-            }
-            
-            if message_text in time_slots:
-                time_slot = time_slots[message_text]
-            else:
-                time_slot = message_text
-            
-            booking_info['time'] = time_slot
-            booking_info['current_step'] = 'unit_type'
-            
-            reply = """Excellent! Which unit type are you interested in?
-
-1️⃣ *3 BHK* (2650 sq ft)
-2️⃣ *4 BHK* (3850 sq ft)
-3️⃣ *Both options*
-
-Please reply with 1, 2, or 3."""
-            
-            state['chat_history'].append((reply, False))
-            return reply
-            
-        elif current_step == 'unit_type':
-            unit_types = {
-                '1': '3 BHK',
-                '2': '4 BHK',
-                '3': 'Both 3 & 4 BHK'
-            }
-            
-            if message_text not in ['1', '2', '3']:
-                reply = """Please select a valid option:
-1️⃣ for 3 BHK
-2️⃣ for 4 BHK
-3️⃣ for Both options"""
-                state['chat_history'].append((reply, False))
-                return reply
-            
-            booking_info['unit_type'] = unit_types[message_text]
-            booking_info['current_step'] = 'budget'
-            
-            reply = """Almost done! 🎯
-
-What is your *approximate budget*?
-
-Example formats:
-• 1.5 Cr
-• 2 Crore
-• 150 Lakhs"""
-            
-            state['chat_history'].append((reply, False))
-            return reply
-            
-        elif current_step == 'budget':
-            budget = extract_budget_from_text(message_text)
-            if not budget:
-                reply = """Please specify your budget in a clear format:
-Example: 1.5 Cr, 2 Crore, or 150 Lakhs"""
-                state['chat_history'].append((reply, False))
-                return reply
-            
-            booking_info['budget'] = budget
-            
-            # Since we're using Google Forms now, redirect to form
-            google_form_url = "https://docs.google.com/forms/d/e/1FAIpQLSceds-nIr9vTLHJ0Jl1TOv0DNYGQhb0CtEa2R3mA9Ae3iP8Lg/viewform"
-            
-            # Clear booking mode
-            state['lead_capture_mode'] = None
-            
-            reply = f"""� To complete your booking, please fill out our site visit form:
-
-📝 {google_form_url}
-
-Once you submit the form, you'll receive a confirmation message with all the details.
-
-Need help with anything else? �"""
-            
-            state['asked_about_brochure'] = True
-            state['chat_history'].append((reply, False))
-            return reply
     
     # ===== EXTRACT AND SAVE BUDGET =====
     budget = extract_budget_from_text(message_text)
     if budget and state.get('booking_info'):
-        # Since we're now using Google Forms to collect budget
-        # Simply log for tracking
         logging.info(f"Budget indicated by {from_phone}: {budget}")
     
     # ===== DEFAULT: USE GEMINI FOR GENERAL QUESTIONS =====
@@ -970,6 +1214,7 @@ Need help with anything else? �"""
     
     state['chat_history'].append((ai_response, False))
     return ai_response
+
 
 
 # ===== WEBHOOK ROUTES =====
